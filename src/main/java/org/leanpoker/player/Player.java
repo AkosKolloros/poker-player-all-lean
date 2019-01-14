@@ -14,7 +14,9 @@ public class Player {
         JsonObject object = request.getAsJsonObject();
         JsonElement betIndex = object.get("bet_index");
         String StringIndex = betIndex.getAsString();
+        System.err.println("ASD");
         System.err.println(StringIndex);
+        System.err.println("ASD");
         return 0;
 
     }
