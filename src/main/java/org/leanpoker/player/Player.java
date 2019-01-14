@@ -17,16 +17,6 @@ public class Player {
         System.err.println("ALL LEAN");
         System.err.println(StringIndex);
 
-        JsonArray players = object.getAsJsonArray("players");
-        String playersAsString = players.getAsString();
-        System.err.println("ALL LEAN 2");
-        System.err.println(playersAsString);
-
-        JsonElement cards = object.get("community_cards");
-        String cardsString = cards.getAsString();
-        System.err.println("ALL LEAN 3");
-        System.err.println(cardsString);
-
         return 500;
 
     }
