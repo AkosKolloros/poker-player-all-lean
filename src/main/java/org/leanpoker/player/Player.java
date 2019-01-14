@@ -21,10 +21,6 @@ public class Player {
         JsonObject players = object.getAsJsonObject("players");
         JsonObject myPlayer = players.getAsJsonObject("All lean");
 
-        System.err.println("ASD");
-        System.err.println(myPlayer);
-        System.err.println("ASD");
-
         return 0;
 
     }
