@@ -11,8 +11,10 @@ public class Player {
     static final String VERSION = "0.1";
 
     public static int betRequest(JsonElement request) {
-        JsonArray array = request.getAsJsonArray();
-        System.err.println(array);
+        JsonObject object = request.getAsJsonObject();
+        JsonElement betIndex = object.get("bet_index");
+        String StringIndex = betIndex.getAsString();
+        System.err.println(StringIndex);
         return 0;
 
     }
