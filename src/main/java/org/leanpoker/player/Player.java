@@ -11,14 +11,22 @@ public class Player {
     static final String VERSION = "0.7";
 
     public static int betRequest(JsonElement request) {
-        JsonObject object = request.getAsJsonObject();
-        System.err.println("ALL LEAN");
-        System.err.println(object);
+        try{
+            JsonObject object = request.getAsJsonObject();
+            System.err.println("ALL LEAN");
+            System.err.println(object);
+
+            return 10;
+        }
+        catch (Exception e){
+            return 10;
+        }
 
 
 
 
-        return 501;
+
+
 
     }
 
