@@ -14,16 +14,16 @@ public class Player {
         JsonObject object = request.getAsJsonObject();
         JsonElement betIndex = object.get("bet_index");
         String StringIndex = betIndex.getAsString();
-        System.err.println("ASD");
+        System.err.println("ALL LEAN");
         System.err.println(StringIndex);
 
         JsonObject players = object.getAsJsonObject("players");
         JsonObject myPlayer = players.getAsJsonObject("All lean");
-        System.err.println("ASD2");
+        System.err.println("ALL LEAN 2");
         System.err.println(myPlayer.toString());
 
         JsonElement cards = object.get("community_cards");
-        System.err.println("ASD3");
+        System.err.println("ALL LEAN 3");
         System.err.println(cards.toString());
 
         return 500;
