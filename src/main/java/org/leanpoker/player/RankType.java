@@ -1,7 +1,6 @@
 package org.leanpoker.player;
 
 public enum RankType{
-    ACE,
     TWO,
     THREE,
     FOUR,
@@ -13,7 +12,8 @@ public enum RankType{
     TEN,
     JACK,
     QUEEN,
-    KING;
+    KING,
+    ACE;
 
     public static int getIndex(RankType type){
         int position = 0;

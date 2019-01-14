@@ -10,7 +10,7 @@ import java.util.Map;
 
 public class Player {
 
-    static final String VERSION = "0.12";
+    static final String VERSION = "0.13";
 
     public static int betRequest(JsonElement request) {
         try{
@@ -36,7 +36,15 @@ public class Player {
             System.err.println(inHand);
             System.err.println(onDesk);
 
-            return 10;
+            for (int i = 0; i < inHand.size(); i++) {
+                Card card = inHand.get(i);
+
+                int rankIndex = RankType.getIndex(card.getRank());
+                if (rankIndex >= 10){
+                    return 1000;
+                }
+            }
+            return 0;
         }
         catch (Exception e){
             System.err.println("~~ALL LEAN BUG~~");
