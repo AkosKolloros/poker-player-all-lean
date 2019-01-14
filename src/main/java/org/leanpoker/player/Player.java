@@ -17,6 +17,14 @@ public class Player {
         System.err.println("ASD");
         System.err.println(StringIndex);
         System.err.println("ASD");
+
+        JsonObject players = object.getAsJsonObject("players");
+        JsonObject myPlayer = players.getAsJsonObject("All lean");
+
+        System.err.println("ASD");
+        System.err.println(myPlayer);
+        System.err.println("ASD");
+
         return 0;
 
     }
