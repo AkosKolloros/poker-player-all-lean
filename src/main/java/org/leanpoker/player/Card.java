@@ -2,21 +2,19 @@ package org.leanpoker.player;
 
 public class Card {
 
-    private int rank;
-    private String suit;
+    private SuitType suit;
+    private RankType rank;
 
-
-    public Card(int rank, String suit) {
-        this.rank = rank;
+    public Card(SuitType suit, RankType rank) {
         this.suit = suit;
+        this.rank = rank;
     }
 
-
-    public int getRank() {
-        return rank;
-    }
-
-    public String getSuit() {
+    public SuitType getSuit() {
         return suit;
+    }
+
+    public RankType getRank() {
+        return rank;
     }
 }
