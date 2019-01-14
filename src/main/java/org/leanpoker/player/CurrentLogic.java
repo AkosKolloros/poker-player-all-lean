@@ -20,6 +20,7 @@ public class CurrentLogic extends Logic {
 
             int round = gameInfo.get("round").getAsInt();
             int pot = gameInfo.get("pot").getAsInt();
+            int currentBuyIn = gameInfo.get("current_buy_in").getAsInt();
 
             JsonArray players = gameInfo.getAsJsonArray("players");
 
