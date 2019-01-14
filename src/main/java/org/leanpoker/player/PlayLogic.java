@@ -3,10 +3,10 @@ package org.leanpoker.player;
 import java.util.*;
 
 public class PlayLogic {
-    private static int mainHandVal;
-    private static int mainHandSuit;
-    private static int secHandVal;
-    private static int secHandSuit;
+    static int mainHandMatch = 0;
+    static int mainHandSuit;
+    static int offHandMatch = 0;
+    static int secHandSuit;
 
 //    public static int playMaker(List<Card> deck, List<Card> hand, HandType bestHand, int pot) {
 //
@@ -70,28 +70,62 @@ public class PlayLogic {
         List<Card> allCards = new ArrayList<>();
         boolean suited = hand.get(0).getSuit().equals(hand.get(1).getSuit());
         int distanceOfHand = Math.abs(RankType.getIndex(hand.get(0).getRank()) - RankType.getIndex(hand.get(1).getRank()));
+        int intmatchValueCard1;
+
+        for (Card card: deck) {
+            if (RankType.getIndex(card.getRank()) == card1) {
+                PlayLogic.mainHandMatch += 1;
+            }
+            if (RankType.getIndex(card.getRank()) == card2) {
+                PlayLogic.offHandMatch += 1;
+            }
+        }
+
+        if (suited && mainHandMatch > 3) {
+            PlayLogic.mainHandMatch = 0;
+            PlayLogic.offHandMatch = 0;
+            return Math.max(currentBuyIn*2, pot);
+        }
+
+        if (suited && mainHandMatch > 2) {
+            PlayLogic.mainHandMatch = 0;
+            PlayLogic.offHandMatch = 0;
+            return Math.max(currentBuyIn*3, pot*2);
+        }
 
         if (distanceOfHand == 0 && card1 > 10) {
+            PlayLogic.mainHandMatch = 0;
+            PlayLogic.offHandMatch = 0;
             return Math.max(pot * 2, currentBuyIn * 20);
         }
 
         if (suited && distanceOfHand == 1 && card1 > 10 || suited && distanceOfHand == 1 && card2 > 10) {
+            PlayLogic.mainHandMatch = 0;
+            PlayLogic.offHandMatch = 0;
             return Math.max(pot, currentBuyIn);
         }
 
         if (suited && distanceOfHand < 3 && card1 > 10 || suited && distanceOfHand < 3 && card2 > 10) {
+            PlayLogic.mainHandMatch = 0;
+            PlayLogic.offHandMatch = 0;
             return Math.max(pot / 2, currentBuyIn * 2);
         }
 
         if (suited && card1 > 10 || suited && card2 > 10) {
+            PlayLogic.mainHandMatch = 0;
+            PlayLogic.offHandMatch = 0;
             return Math.min(pot / 3, currentBuyIn);
         }
 
         if (suited) {
             if (currentBuyIn / pot < 0.5) {
+                PlayLogic.mainHandMatch = 0;
+                PlayLogic.offHandMatch = 0;
                 return currentBuyIn;
             }
         }
+
+
 
         return 0;
 
