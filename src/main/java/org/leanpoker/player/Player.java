@@ -10,7 +10,7 @@ import java.util.Map;
 
 public class Player {
 
-    static final String VERSION = "0.9";
+    static final String VERSION = "0.11";
 
     public static int betRequest(JsonElement request) {
         try{
@@ -39,6 +39,9 @@ public class Player {
             return 10;
         }
         catch (Exception e){
+            System.err.println("ALL LEAN BUG");
+            e.printStackTrace();
+            System.err.println(e);
             return 10;
         }
 
