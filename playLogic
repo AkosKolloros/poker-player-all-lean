@@ -87,6 +87,26 @@ Do I have in my hand the HIGHEST or 2nd HIGHEST CARD?
     2. If not { call }
 
 
+*************Straight***************
+        if (my HAND is in the lower end of STRAIGHT) {
+            --> bet/raise min(POT/2, BLIND*10)
+            if (there is a raise) {
+                --> call }
+
+        else {
+            --> bet/raise/reraise max(POT/2, BLIND*10) }
+        else if (my HAND is in the middle of the straight, but not next to each other) {
+            --> bet/raise/reraise max(POT/2, BLIND*20) }
+
+
+*************Flush***************
+    1. if (my Kicker is part of FLUSH && is the kicker) {
+            --> bet/reraise (POT*2, 600)
+        else {
+            --> bet/reraise (POT, 400)
+
+
+
 *************Full house (PAIR + DRILL)***************
     1. if (myHand == PAIR) {
         --> if (my HAND is not PART of DRILL) {
@@ -97,7 +117,7 @@ Do I have in my hand the HIGHEST or 2nd HIGHEST CARD?
 
         --> else { // my HAND is PART of DRILL //
             --> if (value of my HAND > vs value of PAIR on BOARD) {
-                --> bet/raise max(POT/2, BLIND*20)
+                --> bet/raise allIn
             --> else {
                 --> bet/raise min(POT/2, BLIND*20)
 
