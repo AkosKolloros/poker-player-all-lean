@@ -4,6 +4,8 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class Player {
@@ -24,40 +26,31 @@ public class Player {
 
             JsonArray hole_cards = player.getAsJsonArray("hole_cards");
 
-            Card firstHand = new Card(hole_cards.get(0).getAsJsonArray().get(1).getAsString(), hole_cards.get(0).getAsJsonArray().get(0).getAsString());
-            Card secondHand = new Card(hole_cards.get(1).getAsJsonArray().get(1).getAsString(), hole_cards.get(1).getAsJsonArray().get(0).getAsString());
+            List<Card> inHand = getCards(hole_cards);
 
             JsonArray communityCards = gameInfo.getAsJsonArray("community_cards");
-            if (communityCards.size() == 3){
-                Card firstCommunity = new Card(communityCards.get(0).getAsJsonArray().get(1).getAsString(), communityCards.get(0).getAsJsonArray().get(0).getAsString());
-                Card secondCommunity = new Card(communityCards.get(1).getAsJsonArray().get(1).getAsString(), communityCards.get(1).getAsJsonArray().get(0).getAsString());
-                Card thirdCommunity = new Card(communityCards.get(2).getAsJsonArray().get(1).getAsString(), communityCards.get(2).getAsJsonArray().get(0).getAsString());
-            }
-            else if (communityCards.size() == 4){
-                Card firstCommunity = new Card(communityCards.get(0).getAsJsonArray().get(1).getAsString(), communityCards.get(0).getAsJsonArray().get(0).getAsString());
-                Card secondCommunity = new Card(communityCards.get(1).getAsJsonArray().get(1).getAsString(), communityCards.get(1).getAsJsonArray().get(0).getAsString());
-                Card thirdCommunity = new Card(communityCards.get(2).getAsJsonArray().get(1).getAsString(), communityCards.get(2).getAsJsonArray().get(0).getAsString());
-                Card fourthCommunity = new Card(communityCards.get(3).getAsJsonArray().get(1).getAsString(), communityCards.get(3).getAsJsonArray().get(0).getAsString());
 
-            }
-            else if (communityCards.size() == 5){
-                Card firstCommunity = new Card(communityCards.get(0).getAsJsonArray().get(1).getAsString(), communityCards.get(0).getAsJsonArray().get(0).getAsString());
-                Card secondCommunity = new Card(communityCards.get(1).getAsJsonArray().get(1).getAsString(), communityCards.get(1).getAsJsonArray().get(0).getAsString());
-                Card thirdCommunity = new Card(communityCards.get(2).getAsJsonArray().get(1).getAsString(), communityCards.get(2).getAsJsonArray().get(0).getAsString());
-                Card fourthCommunity = new Card(communityCards.get(3).getAsJsonArray().get(1).getAsString(), communityCards.get(3).getAsJsonArray().get(0).getAsString());
-                Card fifthCommunity = new Card(communityCards.get(4).getAsJsonArray().get(1).getAsString(), communityCards.get(4).getAsJsonArray().get(0).getAsString());
-
-            }
+            List<Card> onDesk = getCards(communityCards);
 
             System.err.println("ALL LEAN");
-            System.err.println(hole_cards.get(0));
+            System.err.println(inHand);
+            System.err.println(onDesk);
 
-            return 1000;
+            return 10;
         }
         catch (Exception e){
-            return 1000;
+            return 10;
         }
 
+    }
+
+    private static List<Card> getCards(JsonArray jsonCards) {
+        List<Card> cards = new ArrayList<>();
+        for (int i = 0; i < jsonCards.size(); i++) {
+            Card card = new Card(jsonCards.get(i).getAsJsonArray().get(1).getAsString(), jsonCards.get(i).getAsJsonArray().get(0).getAsString());
+            cards.add(card);
+        }
+        return cards;
     }
 
     public static void showdown(JsonElement game) {
