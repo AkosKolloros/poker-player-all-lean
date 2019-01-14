@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class Player {
 
-    static final String VERSION = "0.1";
+    static final String VERSION = "0.2";
 
     public static int betRequest(JsonElement request) {
         JsonObject object = request.getAsJsonObject();
@@ -22,8 +22,11 @@ public class Player {
         System.err.println("ASD2");
         System.err.println(myPlayer.toString());
 
+        JsonElement cards = object.get("community_cards");
+        System.err.println("ASD3");
+        System.err.println(cards.toString());
 
-        return 50;
+        return 500;
 
     }
 
