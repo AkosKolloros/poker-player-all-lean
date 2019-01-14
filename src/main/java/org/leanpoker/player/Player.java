@@ -8,17 +8,29 @@ import java.util.Map;
 
 public class Player {
 
-    static final String VERSION = "0.7";
+    static final String VERSION = "0.8";
 
     public static int betRequest(JsonElement request) {
-        JsonObject object = request.getAsJsonObject();
-        System.err.println("ALL LEAN");
-        System.err.println(object);
+        try{
+            JsonObject gameInfo = request.getAsJsonObject();
 
 
+            JsonArray players = gameInfo.getAsJsonArray("players");
+
+            JsonElement playerElement = players.get(0);
+            JsonObject player = playerElement.getAsJsonObject();
+
+            JsonArray hole_cards = player.getAsJsonArray("hole_cards");
 
 
-        return 501;
+            System.err.println("ALL LEAN");
+            System.err.println(hole_cards.get(0));
+
+            return 1000;
+        }
+        catch (Exception e){
+            return 1000;
+        }
 
     }
 
