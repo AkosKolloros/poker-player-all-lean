@@ -39,7 +39,7 @@ public class CurrentLogic extends Logic {
             System.err.println(inHand);
             System.err.println(onDesk);
 
-            return 10;
+            return PlayLogic.playMaker_basic(onDesk, inHand, pot, currentBuyIn);
         }
         catch (Exception e){
             System.err.println("~~ALL LEAN BUG~~");
