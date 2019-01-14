@@ -13,10 +13,17 @@ public class HandAnalyzer {
 
     public boolean isPair(){
         Card firsCard = inHand.get(0);
-        Card secoundCard = inHand.get(1);
-        if(firsCard.getRank().equals(secoundCard.getRank())){
+        Card secondCard = inHand.get(1);
+        if(firsCard.getRank().equals(secondCard.getRank())){
             return true;
         }else{
+            for (Card card : inHand) {
+                for (Card cardOnTable : onTable) {
+                    if(card.getRank().equals(cardOnTable.getRank())){
+                        return true;
+                    }
+                }
+            }
             return false;
         }
     }
