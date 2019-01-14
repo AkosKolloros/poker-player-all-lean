@@ -17,11 +17,10 @@ public class Player {
         System.err.println("ALL LEAN");
         System.err.println(StringIndex);
 
-        JsonObject players = object.getAsJsonObject("players");
-        JsonObject myPlayer = players.getAsJsonObject("All lean");
-        String myPlayerString = myPlayer.getAsString();
+        JsonArray players = object.getAsJsonArray("players");
+        String playersAsString = players.getAsString();
         System.err.println("ALL LEAN 2");
-        System.err.println(myPlayerString);
+        System.err.println(playersAsString);
 
         JsonElement cards = object.get("community_cards");
         String cardsString = cards.getAsString();
