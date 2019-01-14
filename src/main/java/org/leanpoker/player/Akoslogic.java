@@ -36,22 +36,23 @@ public class Akoslogic extends Logic {
 
             List<Card> onDesk = getCards(communityCards);
 
+            HandAnalyzer handAnalyzer = new HandAnalyzer(inHand, onDesk);
+
             System.err.println("ALL LEAN STUFF");
+
             System.err.println(inHand);
             System.err.println(onDesk);
-            int lastRank = -1;
+
             for (int i = 0; i < inHand.size(); i++) {
                 Card card = inHand.get(i);
                 int rankNumber = RankType.getIndex(card.getRank());
-                if (lastRank == rankNumber){
+                if (handAnalyzer.isPair()){
                     return minimumRaise;
                 }
 
                 if (rankNumber >= 11){
                     return bigBlind;
                 }
-
-                lastRank = rankNumber;
             }
             return 0;
         }
