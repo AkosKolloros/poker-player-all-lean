@@ -8,25 +8,25 @@ import java.util.Map;
 
 public class Player {
 
-    static final String VERSION = "0.2";
+    static final String VERSION = "0.5";
 
     public static int betRequest(JsonElement request) {
         JsonObject object = request.getAsJsonObject();
         JsonElement betIndex = object.get("bet_index");
         String StringIndex = betIndex.getAsString();
-        System.err.println("ASD");
+        System.err.println("ALL LEAN");
         System.err.println(StringIndex);
 
-        JsonObject players = object.getAsJsonObject("players");
-        JsonObject myPlayer = players.getAsJsonObject("All lean");
-        System.err.println("ASD2");
-        System.err.println(myPlayer.toString());
+        JsonElement community_cards = object.get("community_cards");
+        JsonArray community_cardsAsJsonArray = community_cards.getAsJsonArray();
+        String community_cardsAsString = "";
+        for (int i = 0; i < community_cardsAsJsonArray.size(); i++) {
+            community_cardsAsString += community_cardsAsJsonArray.get(i).getAsString();
+        }
+        System.err.println("ALL LEAN 2");
+        System.err.println(community_cardsAsString);
 
-        JsonElement cards = object.get("community_cards");
-        System.err.println("ASD3");
-        System.err.println(cards.toString());
-
-        return 500;
+        return 501;
 
     }
 
