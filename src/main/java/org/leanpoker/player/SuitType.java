@@ -1,7 +1,7 @@
 package org.leanpoker.player;
 
 public enum SuitType{
-    HARTS,      //red
+    HEARTS,      //red
     DIAMONDS,   //red
     SPADES,     //black
     CLUBS;      //black

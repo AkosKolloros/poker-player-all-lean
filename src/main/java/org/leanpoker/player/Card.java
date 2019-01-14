@@ -22,7 +22,7 @@ public class Card {
         SuitType suitType = null;
         switch (suit){
             case "hearts":
-                suitType = SuitType.HARTS;
+                suitType = SuitType.HEARTS;
                 break;
             case "spades":
                 suitType = SuitType.SPADES;
