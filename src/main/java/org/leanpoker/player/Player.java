@@ -3,6 +3,7 @@ package org.leanpoker.player;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import netscape.javascript.JSObject;
 
 import java.util.Map;
 
@@ -12,21 +13,25 @@ public class Player {
 
     public static int betRequest(JsonElement request) {
         try{
-            JsonObject object = request.getAsJsonObject();
-            System.err.println("ALL LEAN");
-            System.err.println(object);
+            JsonObject gameInfo = request.getAsJsonObject();
 
-            return 10;
+
+            JsonArray players = gameInfo.getAsJsonArray("players");
+
+            JsonElement playerElement = players.get(0);
+            JsonObject player = playerElement.getAsJsonObject();
+
+            JsonArray hole_cards = player.getAsJsonArray("hole_cards");
+
+
+            System.err.println("ALL LEAN");
+            System.err.println(hole_cards.get(0));
+
+            return 1000;
         }
         catch (Exception e){
-            return 10;
+            return 1000;
         }
-
-
-
-
-
-
 
     }
 
