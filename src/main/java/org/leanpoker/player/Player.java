@@ -10,7 +10,7 @@ import java.util.Map;
 
 public class Player {
 
-    static final String VERSION = "0.13";
+    static final String VERSION = "0.14";
 
     public static int betRequest(JsonElement request) {
         try{
