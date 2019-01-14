@@ -1,0 +1,84 @@
+principles:
+
+1. If at the beginning of the circle, be more cautious, rather drop. Small/Big Blind is Risky to play even with good cards.
+2. Compare myBet with Total POT + win chances
+3. Check how many players are at the table
+
+
+
+int position == return the position within the round;
+
+HAND PRIORITY:
+high card
+one pair
+two pairs
+three of a kind (drill)
+offsuited - straight
+flush (suited)
+full house
+four of a kind (poker)
+Straight Flush - suited straight
+Royal Flush (ending with A)
+
+
+
+WHAT IS IN MY HAND IN THE CURRENT TURN (1-10 rank)
+
+WE SHOULD CHECK OUR CURRENT HAND FROM STRONGEST TO LOWEST!
+
+
+*************HIGH CARD***************
+Do I have in my hand the HIGHEST or 2nd HIGHEST CARD?
+    If (perPlayerBET < 4x of BLIND) {
+        --> call; }
+    else { pass; }
+
+
+*************PAIR***************
+
+1. My cards are pair?
+    1. Is the value ABOVE Q?
+        --> raise max(POT, 10x of BLIND);
+            --> was there a reraise?
+                --> int reraiseRate = (enemyReraise/POT)
+                    --> reraise POT * (1/reraiseRate)
+                        --> is there a second reraise/call?
+                            --> call or check;
+
+    2. Is the value ABOVE 8?
+        --> raise max(POT, 10x of BLIND);
+            --> was there a reraise?
+                --> int reraiseRate = (enemyReraise/POT)
+                    if (reraiseRate < 1) {
+                        --> reraise POT * (1/reraiseRate)
+                            --> is there a second reraise/call?
+                                --> call or check; }
+                    else { call; }
+
+    3. Is the value BELOW 9?
+        --> raise max(POT, 10x of BLIND);
+            --> was there a reraise?
+                --> call;
+
+
+*************TWO PAIR***************
+    1. If my HAND PAIR is not part of the two highest PAIR {
+        --> check / pass }
+
+    2. Is my hand a pair? --> to see if the second pair is on the board or mixed with my hand
+        --> if yes, is my HAND PAIR higher vs. BOARD PAIR?
+            --> Is the Kicker (5th card) higher then my PAIR?
+                --> was there a raise before me?
+                    --> if (myBet vs POT) > 0.2 {
+                            call }
+                        else { pass }
+                --> else { raise POT/2);
+            --> else (I am the kicker) {
+                --> raise POT;
+
+    2b. Else (so the two pairs are mixed with my hand) {
+        --> RAISE POT }
+
+
+*************Three of a kind***************
+    1. If my HAND is PAIR (
