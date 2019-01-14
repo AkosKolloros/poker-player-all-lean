@@ -46,11 +46,15 @@ public class Akoslogic extends Logic {
             for (int i = 0; i < inHand.size(); i++) {
                 Card card = inHand.get(i);
                 int rankNumber = RankType.getIndex(card.getRank());
-                if (handAnalyzer.isPair()){
+                if (handAnalyzer.isDrill()){
+                    return minimumRaise * 3;
+                }
+
+                else if (handAnalyzer.isPair()){
                     return minimumRaise;
                 }
 
-                if (rankNumber >= 11){
+                else if (rankNumber >= 11){
                     return bigBlind;
                 }
             }
