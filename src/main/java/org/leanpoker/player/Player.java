@@ -8,12 +8,10 @@ import java.util.Map;
 
 public class Player {
 
-    static final String VERSION = "0.6";
+    static final String VERSION = "0.7";
 
     public static int betRequest(JsonElement request) {
         JsonObject object = request.getAsJsonObject();
-        JsonElement betIndex = object.get("bet_index");
-        String StringIndex = betIndex.getAsString();
         System.err.println("ALL LEAN");
         System.err.println(object);
 
