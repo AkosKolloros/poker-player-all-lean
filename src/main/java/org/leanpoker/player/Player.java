@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class Player {
 
-    static final String VERSION = "0.4";
+    static final String VERSION = "0.5";
 
     public static int betRequest(JsonElement request) {
         JsonObject object = request.getAsJsonObject();
@@ -21,7 +21,7 @@ public class Player {
         JsonArray community_cardsAsJsonArray = community_cards.getAsJsonArray();
         String community_cardsAsString = "";
         for (int i = 0; i < community_cardsAsJsonArray.size(); i++) {
-            community_cardsAsString += community_cardsAsJsonArray.get(i).toString();
+            community_cardsAsString += community_cardsAsJsonArray.get(i).getAsString();
         }
         System.err.println("ALL LEAN 2");
         System.err.println(community_cardsAsString);
