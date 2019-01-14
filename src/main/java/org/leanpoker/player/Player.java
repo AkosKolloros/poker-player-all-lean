@@ -4,7 +4,7 @@ import com.google.gson.JsonElement;
 
 public class Player {
 
-    static final String VERSION = "0.14Akos";
+    static final String VERSION = "0.15Akos";
     static final PlayLogic playerLogic = null;
 
     public static int betRequest(JsonElement request) {

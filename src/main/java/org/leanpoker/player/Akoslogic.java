@@ -20,6 +20,8 @@ public class Akoslogic extends Logic {
 
             int round = gameInfo.get("round").getAsInt();
             int pot = gameInfo.get("pot").getAsInt();
+            int minimumRaise = gameInfo.get("minimum_raise").getAsInt();
+            int bigBlind = gameInfo.get("small_blind").getAsInt() * 2;
 
             JsonArray players = gameInfo.getAsJsonArray("players");
 
@@ -37,12 +39,19 @@ public class Akoslogic extends Logic {
             System.err.println("ALL LEAN STUFF");
             System.err.println(inHand);
             System.err.println(onDesk);
+            int lastRank = -1;
             for (int i = 0; i < inHand.size(); i++) {
                 Card card = inHand.get(i);
                 int rankNumber = RankType.getIndex(card.getRank());
-                if (rankNumber >= 11){
-                    return 10;
+                if (lastRank == rankNumber){
+                    return minimumRaise;
                 }
+
+                if (rankNumber >= 11){
+                    return bigBlind;
+                }
+
+                lastRank = rankNumber;
             }
             return 0;
         }
