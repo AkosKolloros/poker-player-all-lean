@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class Player {
 
-    static final String VERSION = "0.2";
+    static final String VERSION = "0.3";
 
     public static int betRequest(JsonElement request) {
         JsonObject object = request.getAsJsonObject();
@@ -17,7 +17,7 @@ public class Player {
         System.err.println("ALL LEAN");
         System.err.println(StringIndex);
 
-        return 500;
+        return 501;
 
     }
 
