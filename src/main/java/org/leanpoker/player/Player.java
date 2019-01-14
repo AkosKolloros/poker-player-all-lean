@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class Player {
 
-    static final String VERSION = "0.7";
+    static final String VERSION = "0.8";
 
     public static int betRequest(JsonElement request) {
         try{
