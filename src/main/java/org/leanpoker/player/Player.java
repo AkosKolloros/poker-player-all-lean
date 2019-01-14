@@ -1,5 +1,6 @@
 package org.leanpoker.player;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
@@ -10,8 +11,8 @@ public class Player {
     static final String VERSION = "0.1";
 
     public static int betRequest(JsonElement request) {
-        JsonObject object = request.getAsJsonObject();
-        System.err.println(object.toString());
+        JsonArray array = request.getAsJsonArray();
+        System.err.println(array);
         return 0;
 
     }
