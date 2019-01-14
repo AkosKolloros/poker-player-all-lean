@@ -39,8 +39,22 @@ public class PlayLogic {
             int SUIT = maxValue(winnerSuit);
 
 
+        } else if (bestHand.equals(8)) {
+            // POKER //
+        } else if (bestHand.equals(7)) {
+            //FULL HOUSE //
+        } else if (bestHand.equals(6)) {
+            // flush //
+        } else if (bestHand.equals(5)) {
+            // straight //
+        } else if (bestHand.equals(4)) {
+            // drill //
+        } else if (bestHand.equals(3)) {
+            // Two Pairs //
+        } else if (bestHand.equals(2)) {
+            // Pair //
         } else {
-            System.out.println();
+            // HIGH Card
         }
         return 10;
     }
