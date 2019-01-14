@@ -36,7 +36,9 @@ public class Player {
             System.err.println(inHand);
             System.err.println(onDesk);
 
-            return 10;
+//            PlayLogic.playMaker_basic(onDesk, inHand, pot)
+            return 0;
+
         }
         catch (Exception e){
             System.err.println("~~ALL LEAN BUG~~");
