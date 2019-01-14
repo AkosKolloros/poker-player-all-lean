@@ -1,13 +1,16 @@
 package org.leanpoker.player;
 
-public class HandAnalyzer {
-    private String communityCards;
-    private String cardsInHand;
+import java.util.List;
 
-    public HandAnalyzer(String communityCards, String cardsInHand) {
-        this.communityCards = communityCards;
-        this.cardsInHand = cardsInHand;
+public class HandAnalyzer {
+    List<Card> onTable;
+    List<Card> inHand;
+
+    public HandAnalyzer(List<Card> onTable, List<Card> inHand) {
+        this.onTable = onTable;
+        this.inHand = inHand;
     }
+
 
 
 }
