@@ -36,7 +36,7 @@ Do I have in my hand the HIGHEST or 2nd HIGHEST CARD?
 
 *************PAIR***************
 
-1. My cards are pair?
+1. My HAND IS a pair?
     1. Is the value ABOVE Q?
         --> raise max(POT, 10x of BLIND);
             --> was there a reraise?
@@ -81,4 +81,55 @@ Do I have in my hand the HIGHEST or 2nd HIGHEST CARD?
 
 
 *************Three of a kind***************
-    1. If my HAND is PAIR (
+    1. If my HAND is PAIR {
+        --> Raise MAX(POT, BLIND*20)
+
+    2. If not { call }
+
+
+*************Full house (PAIR + DRILL)***************
+    1. if (myHand == PAIR) {
+        --> if (my HAND is not PART of DRILL) {
+            --> if (value of my HAND higher vs value of DRILL) {
+                --> bet/raise min(POT/2, BLIND*20)
+            --> else {
+                --> call/check }
+
+        --> else { // my HAND is PART of DRILL //
+            --> if (value of my HAND > vs value of PAIR on BOARD) {
+                --> bet/raise max(POT/2, BLIND*20)
+            --> else {
+                --> bet/raise min(POT/2, BLIND*20)
+
+    2. if (myHand != PAIR) {
+        --> if (my HAND is part of DRILL) {
+            --> if (value of DRILL > value of PAIR) {
+                call; }
+            --> else {
+                check/fold; }
+        --> else
+            --> if (value of PAIR > value of DRILL) {
+                --> if (raise < myPart in POT) {
+                    call }
+            --> check/fold
+
+*************Four of a kind (POKER)***************
+
+    1. is my HAND part of the Poker?
+        --> raise (POT)
+            --> if there is a reraise allIn
+
+*************Straight Flush***************
+    1. if my cards are not part of the straight
+        call anything
+
+    2. else {
+        if my cards are in the lower end of the straight {
+            call anything; }
+
+        else
+            --> raise max(POT, 300)
+
+*************Royal Flush***************
+     raise max(POT, 200)
+
