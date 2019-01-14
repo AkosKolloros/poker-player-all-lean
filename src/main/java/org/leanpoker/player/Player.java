@@ -16,12 +16,14 @@ public class Player {
         String StringIndex = betIndex.getAsString();
         System.err.println("ASD");
         System.err.println(StringIndex);
-        System.err.println("ASD");
 
         JsonObject players = object.getAsJsonObject("players");
         JsonObject myPlayer = players.getAsJsonObject("All lean");
+        System.err.println("ASD2");
+        System.err.println(myPlayer.toString());
 
-        return 0;
+
+        return 50;
 
     }
 
