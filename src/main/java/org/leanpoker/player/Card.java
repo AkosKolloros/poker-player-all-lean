@@ -5,9 +5,7 @@ public class Card {
     private SuitType suit;
     private RankType rank;
 
-    public Card(SuitType suit, RankType rank) {
-        this.suit = suit;
-        this.rank = rank;
+    public Card(String suit, String rank) {
     }
 
     public SuitType getSuit() {
