@@ -19,12 +19,14 @@ public class Player {
 
         JsonObject players = object.getAsJsonObject("players");
         JsonObject myPlayer = players.getAsJsonObject("All lean");
+        String myPlayerString = myPlayer.getAsString();
         System.err.println("ALL LEAN 2");
-        System.err.println(myPlayer.toString());
+        System.err.println(myPlayerString);
 
         JsonElement cards = object.get("community_cards");
+        String cardsString = cards.getAsString();
         System.err.println("ALL LEAN 3");
-        System.err.println(cards.toString());
+        System.err.println(cardsString);
 
         return 500;
 
