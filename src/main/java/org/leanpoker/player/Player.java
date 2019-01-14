@@ -32,16 +32,17 @@ public class Player {
 
             List<Card> onDesk = getCards(communityCards);
 
-            System.err.println("ALL LEAN");
+            System.err.println("ALL LEAN STUFF");
             System.err.println(inHand);
             System.err.println(onDesk);
 
             return 10;
         }
         catch (Exception e){
-            System.err.println("ALL LEAN BUG");
+            System.err.println("~~ALL LEAN BUG~~");
             e.printStackTrace();
             System.err.println(e);
+            System.err.println("~~BUG END~~");
             return 10;
         }
 
@@ -50,7 +51,7 @@ public class Player {
     private static List<Card> getCards(JsonArray jsonCards) {
         List<Card> cards = new ArrayList<>();
         for (int i = 0; i < jsonCards.size(); i++) {
-            Card card = new Card(jsonCards.get(i).getAsJsonArray().get(1).getAsString(), jsonCards.get(i).getAsJsonArray().get(0).getAsString());
+            Card card = new Card(jsonCards.get(i).getAsJsonObject().get("suit").getAsString(), jsonCards.get(i).getAsJsonObject().get("rank").getAsString());
             cards.add(card);
         }
         return cards;
